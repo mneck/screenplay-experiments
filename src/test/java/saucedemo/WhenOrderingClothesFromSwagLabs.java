@@ -27,14 +27,13 @@ class WhenOrderingClothesFromSwagLabs {
     Actor melinda;
 
     @Test
-    @DisplayName("Add a todo item to an empty list")
+    @DisplayName("Login with standard username and password")
     void addToEmptyList() {
         melinda.attemptsTo(
-                Open.url("https://todomvc.com/examples/angular/dist/browser/#/all"),
-//                Click.on(InputField.withNameOrId("username")),
-
-                Enter.theValue(STANDARD_USER_USERNAME).into(".username").thenHit(Keys.RETURN),
-                Enter.theValue(PASSWORD).into("password").thenHit(Keys.RETURN)
+                Open.url(URL),
+                Enter.theValue(STANDARD_USER_USERNAME).into("#user-name").thenHit(Keys.RETURN),
+                Enter.theValue(PASSWORD).into("#password").thenHit(Keys.RETURN),
+                Click.on(Button.withNameOrId("login-button"))
         );
 //        var todos = melinda.asksFor(Text.ofEach(".todo-list li"));
 //        assertThat(todos).containsExactly("Buy butter", "Buy eggs");
