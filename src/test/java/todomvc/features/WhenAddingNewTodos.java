@@ -1,5 +1,6 @@
 package todomvc.features;
 
+import net.serenitybdd.screenplay.ensure.Ensure;
 import org.junit.jupiter.api.extension.ExtendWith;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.annotations.CastMember;
