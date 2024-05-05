@@ -1,7 +1,8 @@
 package todomvc.features;
 
-
 import org.junit.jupiter.api.extension.ExtendWith;
+//import org.junit.jupiter.api.Tag;
+
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.annotations.CastMember;
 import net.serenitybdd.screenplay.Actor;
@@ -14,9 +15,9 @@ import net.serenitybdd.screenplay.questions.Text;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-
 @ExtendWith(SerenityJUnit5Extension.class)
-class AddNewTodos {
+//@Tag("todomvc.features")
+class WhenAddNewTodos {
 
     @CastMember(name = "Toby")
     Actor toby;
@@ -25,7 +26,7 @@ class AddNewTodos {
     @DisplayName("Add a todo item to an empty list")
     void addToEmptyList() {
         toby.attemptsTo(
-                Open.url("https://todomvc.com/examples/angularjs/#/"),
+                Open.url("https://todomvc.com/examples/angular/dist/browser/#/all"),
                 Enter.theValue("Buy some milk").into(".new-todo").thenHit(Keys.RETURN)
         );
         var todos = toby.asksFor(Text.ofEach(".todo-list li"));
