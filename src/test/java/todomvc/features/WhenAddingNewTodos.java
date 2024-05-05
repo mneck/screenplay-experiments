@@ -1,8 +1,6 @@
 package todomvc.features;
 
 import org.junit.jupiter.api.extension.ExtendWith;
-//import org.junit.jupiter.api.Tag;
-
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.annotations.CastMember;
 import net.serenitybdd.screenplay.Actor;
@@ -16,8 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @ExtendWith(SerenityJUnit5Extension.class)
-//@Tag("todomvc.features")
-class WhenAddNewTodos {
+class WhenAddingNewTodos {
 
     @CastMember(name = "Toby")
     Actor toby;
