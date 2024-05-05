@@ -24,9 +24,11 @@ class WhenAddingNewTodos {
     void addToEmptyList() {
         toby.attemptsTo(
                 Open.url("https://todomvc.com/examples/angular/dist/browser/#/all"),
-                Enter.theValue("Buy some milk").into(".new-todo").thenHit(Keys.RETURN)
+                Enter.theValue("Buy butter").into(".new-todo").thenHit(Keys.RETURN),
+                Enter.theValue("Buy eggs").into(".new-todo").thenHit(Keys.RETURN)
         );
         var todos = toby.asksFor(Text.ofEach(".todo-list li"));
-        assertThat(todos).containsExactly("Buy some milk");
+        assertThat(todos).containsExactly("Buy butter", "Buy eggs");
     }
+
 }
