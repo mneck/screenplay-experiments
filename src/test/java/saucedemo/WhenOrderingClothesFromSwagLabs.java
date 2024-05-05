@@ -1,5 +1,9 @@
-package todomvc.features;
+package saucedemo;
 
+
+import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.ui.Button;
+import net.serenitybdd.screenplay.ui.InputField;
 import org.junit.jupiter.api.extension.ExtendWith;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.annotations.CastMember;
@@ -12,23 +16,28 @@ import org.openqa.selenium.Keys;
 import net.serenitybdd.screenplay.questions.Text;
 import static org.assertj.core.api.Assertions.assertThat;
 
+// Import the Constants class
+import static saucedemo.Constants.*;
 
 @ExtendWith(SerenityJUnit5Extension.class)
-class WhenAddingNewTodos {
+class WhenOrderingClothesFromSwagLabs {
 
-    @CastMember(name = "Toby")
-    Actor toby;
+
+    @CastMember(name = "Melinda")
+    Actor melinda;
 
     @Test
     @DisplayName("Add a todo item to an empty list")
     void addToEmptyList() {
-        toby.attemptsTo(
+        melinda.attemptsTo(
                 Open.url("https://todomvc.com/examples/angular/dist/browser/#/all"),
-                Enter.theValue("Buy butter").into(".new-todo").thenHit(Keys.RETURN),
-                Enter.theValue("Buy eggs").into(".new-todo").thenHit(Keys.RETURN)
+//                Click.on(InputField.withNameOrId("username")),
+
+                Enter.theValue(STANDARD_USER_USERNAME).into(".username").thenHit(Keys.RETURN),
+                Enter.theValue(PASSWORD).into("password").thenHit(Keys.RETURN)
         );
-        var todos = toby.asksFor(Text.ofEach(".todo-list li"));
-        assertThat(todos).containsExactly("Buy butter", "Buy eggs");
+//        var todos = melinda.asksFor(Text.ofEach(".todo-list li"));
+//        assertThat(todos).containsExactly("Buy butter", "Buy eggs");
     }
 
 }
