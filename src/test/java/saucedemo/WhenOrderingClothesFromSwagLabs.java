@@ -1,12 +1,11 @@
 package saucedemo;
 
 
+import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.ui.Button;
-import net.serenitybdd.screenplay.ui.InputField;
 import net.serenitybdd.screenplay.ui.PageElement;
-import org.htmlunit.javascript.host.html.HTMLSpanElement;
 import org.junit.jupiter.api.extension.ExtendWith;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.serenitybdd.screenplay.annotations.CastMember;
@@ -15,13 +14,12 @@ import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actions.Enter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Keys;
 
-import net.serenitybdd.screenplay.questions.Text;
 import static org.assertj.core.api.Assertions.assertThat;
 
 // Import the Constants class
 import static saucedemo.Constants.*;
+import static saucedemo.LoginActions.loginAsAStandardUser;
 
 @ExtendWith(SerenityJUnit5Extension.class)
 class WhenOrderingClothesFromSwagLabs {
@@ -36,13 +34,8 @@ class WhenOrderingClothesFromSwagLabs {
     @Test
     @DisplayName("Login with standard username and buy a jacket")
     void loginAndBuyJacket() {
-        melinda.attemptsTo(
-                Open.url(URL),
-                Enter.theValue(STANDARD_USER_USERNAME).into("#user-name"),
-                Enter.theValue(PASSWORD).into("#password"),
-                Click.on(Button.withNameOrId("login-button")),
-                Ensure.that(PageElement.withNameOrId("title")).hasTextContent("Products")
-        );
+        melinda.attemptsTo(loginAsAStandardUser(),
+                Ensure.that(PageElement.withNameOrId("title")).hasTextContent("Products"));
 
         melinda.attemptsTo(
                 Click.on(Button.withNameOrId("add-to-cart-sauce-labs-fleece-jacket")),
